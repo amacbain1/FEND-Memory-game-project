@@ -11,7 +11,7 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
+/*function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -23,8 +23,17 @@ function shuffle(array) {
     }
 
     return array;
-}
+}*/
 
+const deck = document.querySelectorAll('.card');
+
+deck.forEach(function(card) {
+  card.addEventListener('click', function(e){
+    card.classList.add('open', 'show');
+    console.log('click');
+
+  });
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
