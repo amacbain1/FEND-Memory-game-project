@@ -11,7 +11,7 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-/*function shuffle(array) {
+function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -23,13 +23,17 @@
     }
 
     return array;
-}*/
+}
 
 const deck = document.querySelectorAll('.card');
+const match = document.querySelectorAll('.match');
 
 deck.forEach(function(card) {
   card.addEventListener('click', function(e){
     card.classList.add('open', 'show');
+    if (card == match) {
+      card.classList.toggle('open', 'show');
+    }
     console.log('click');
 
   });

@@ -107,3 +107,32 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+  Modal box for end of game
+*/
+
+#modal {
+  /*display: none;*/
+  position: fixed;
+  z-index: auto;
+  width: 50%;
+  height: 20%;
+  overflow: auto;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 10px;
+  border: 7px solid blue;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.finish {
+  color: blue;
+  font-size: 1.25em;
+}
