@@ -113,11 +113,11 @@ h1 {
 */
 
 #modal {
-  /*display: none;*/
+  display: none;
   position: fixed;
   z-index: auto;
   width: 50%;
-  height: 20%;
+  height: 30%;
   overflow: auto;
   background-color: white;
   border-radius: 5px;
@@ -125,7 +125,7 @@ h1 {
 
 .modal-content {
   background-color: white;
-  margin: auto;
+  margin: 20%, auto;
   padding: 10px;
   border: 7px solid blue;
   border-radius: 5px;
@@ -135,4 +135,10 @@ h1 {
 .finish {
   color: blue;
   font-size: 1.25em;
+}
+
+.play-again:hover,
+.play-again:focus {
+  color: black;
+  cursor: pointer;
 }

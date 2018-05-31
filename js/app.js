@@ -31,6 +31,7 @@ const match = document.querySelectorAll('.match');
 deck.forEach(function(card) {
   card.addEventListener('click', function(e){
     card.classList.add('open', 'show');
+
     if (card == match) {
       card.classList.toggle('open', 'show');
     }
@@ -38,6 +39,20 @@ deck.forEach(function(card) {
 
   });
 });
+
+//modal
+const modal = document.querySelector('#modal');
+const temp = document.querySelector('#temp');
+const playAgain = document.querySelector('.play-again');
+
+temp.onclick = function() {  //temp button to test modal
+  modal.style.display = 'block';
+}
+
+playAgain.onclick = function(){  //click to get rid of display
+  modal.style.display = 'none';
+}
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
