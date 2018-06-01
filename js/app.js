@@ -1,7 +1,18 @@
 /*
  * Create a list that holds all of your cards
  */
+const cards = ['fa-diamond', 'fa-diamond',
+               'fa-paper-plane-o', 'fa-paper-plane-o',
+               'fa-anchor', 'fa-anchor',
+               'fa-bolt', 'fa-bolt',
+               'fa-cube', 'fa-cube',
+               'fa-leaf', 'fa-leaf',
+               'fa-bicycle', 'fa-bicycle',
+               'fa-bomb', 'fa-bomb'];
 
+function generateCard(card) {
+  return '<li class="card"><i class="fa ${card}"></i></li>';
+}
 
 /*
  * Display the cards on the page
@@ -25,18 +36,43 @@ function shuffle(array) {
     return array;
 }
 
-const deck = document.querySelectorAll('.card');
-const match = document.querySelectorAll('.match');
+function initGame() {
+  const deck = document.querySelector('.deck');
+  const cardHTML = cards.map(function(card) {
+    return generateCard(card);
+  });
+
+  deck.innerHTML = cardHTML.join('');
+}
+
+initGame();
+
+
+
+const allCards = document.querySelectorAll('.card');
+//const match = document.querySelectorAll('.match');
 const cardsShowing = [];
 
-deck.forEach(function(card) {
-  card.addEventListener('click', function(e){
-    if (cardsShowing.length === 2) {
-      console.log('click');
-    }else{
-      cardsShowing.push(deck);
+allCards.forEach(function(card) {
+  card.addEventListener('click', function(e) {
+
+    if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
+      cardsShowing.push(card);
       card.classList.add('open', 'show');
-    }
+
+    const firstCardType = cardsShowing[0].dataset.card;
+    console.log(firstCardType);
+
+      if (cardsShowing.length == 2) {
+        setTimeout(function(){
+          cardsShowing.forEach(function(card) {
+            card.classList.remove('open', 'show');
+          });
+
+          //cardsShowing = [];
+        }, 1000);
+      }
+      }
   });
 });
 
