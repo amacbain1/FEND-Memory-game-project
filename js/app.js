@@ -51,7 +51,7 @@ initGame();
 
 const allCards = document.querySelectorAll('.card');
 //const match = document.querySelectorAll('.match');
-const cardsShowing = [];
+let cardsShowing = [];
 
 allCards.forEach(function(card) {
   card.addEventListener('click', function(e) {
@@ -60,19 +60,32 @@ allCards.forEach(function(card) {
       cardsShowing.push(card);
       card.classList.add('open', 'show');
 
-    const firstCardType = cardsShowing[0].dataset.card;
+  //  const firstCardType = cardsShowing[0].dataset.card;
     console.log(card.innerHTML);
 
+
       if (cardsShowing.length == 2) {
-        setTimeout(function(){
-          cardsShowing.forEach(function(card) {
-            card.classList.remove('open', 'show');
+        if (cardsShowing[0].dataset.card == cardsShowing[1].dataset.card){
+          cardsShowing[0].classList.add('match');
+          cardsShowing[0].classList.add('open');  //Do I need open and show here???
+          cardsShowing[0].classList.add('show');
+
+          cardsShowing[1].classList.add('match');
+          cardsShowing[1].classList.add('open');
+          cardsShowing[1].classList.add('show');
+          cardsShowing = [];
+
+        }else {
+          setTimeout(function(){
+            cardsShowing.forEach(function(card) {
+              card.classList.remove('open', 'show');
           });
 
           cardsShowing = [];
         }, 1000);
       }
       }
+    }
   });
 });
 
