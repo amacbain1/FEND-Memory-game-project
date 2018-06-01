@@ -27,25 +27,25 @@ function shuffle(array) {
 
 const deck = document.querySelectorAll('.card');
 const match = document.querySelectorAll('.match');
+const cardsShowing = [];
 
 deck.forEach(function(card) {
   card.addEventListener('click', function(e){
-    card.classList.add('open', 'show');
-
-    if (card == match) {
-      card.classList.toggle('open', 'show');
+    if (cardsShowing.length === 2) {
+      console.log('click');
+    }else{
+      cardsShowing.push(deck);
+      card.classList.add('open', 'show');
     }
-    console.log('click');
-
   });
 });
 
-//modal
+//modal box when game is won
 const modal = document.querySelector('#modal');
-const temp = document.querySelector('#temp');
+const temp = document.querySelector('#temp'); //temporary button for testing.
 const playAgain = document.querySelector('.play-again');
 
-temp.onclick = function() {  //temp button to test modal
+temp.onclick = function() {  //temporary button to test modal
   modal.style.display = 'block';
 }
 
