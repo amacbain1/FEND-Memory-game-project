@@ -11,7 +11,7 @@ const cards = ['fa-diamond', 'fa-diamond',
                'fa-bomb', 'fa-bomb'];
 
 function generateCard(card) {
-  return '<li class="card"><i class="fa ${card}"></i></li>';
+  return `<li class="card" data-card=${card}><i class="fa ${card}"></i></li>`;
 }
 
 /*
@@ -38,7 +38,7 @@ function shuffle(array) {
 
 function initGame() {
   const deck = document.querySelector('.deck');
-  const cardHTML = cards.map(function(card) {
+  const cardHTML = shuffle(cards).map(function(card) {
     return generateCard(card);
   });
 
@@ -61,7 +61,7 @@ allCards.forEach(function(card) {
       card.classList.add('open', 'show');
 
     const firstCardType = cardsShowing[0].dataset.card;
-    console.log(firstCardType);
+    console.log(card.innerHTML);
 
       if (cardsShowing.length == 2) {
         setTimeout(function(){
@@ -69,7 +69,7 @@ allCards.forEach(function(card) {
             card.classList.remove('open', 'show');
           });
 
-          //cardsShowing = [];
+          cardsShowing = [];
         }, 1000);
       }
       }
