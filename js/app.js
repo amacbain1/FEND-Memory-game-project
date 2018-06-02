@@ -10,7 +10,7 @@ const cards = ['fa-diamond', 'fa-diamond',
                'fa-bicycle', 'fa-bicycle',
                'fa-bomb', 'fa-bomb'];
 
-function generateCard(card) {
+function generateCard(card) {    //generate interactive card list with data-card
   return `<li class="card" data-card=${card}><i class="fa ${card}"></i></li>`;
 }
 
@@ -38,7 +38,7 @@ function shuffle(array) {
 
 function initGame() {
   const deck = document.querySelector('.deck');
-  const cardHTML = shuffle(cards).map(function(card) {
+  const cardHTML = shuffle(cards).map(function(card) { //shuffle deck and call generate card function
     return generateCard(card);
   });
 
@@ -50,7 +50,6 @@ initGame();
 
 
 const allCards = document.querySelectorAll('.card');
-//const match = document.querySelectorAll('.match');
 let cardsShowing = [];
 
 allCards.forEach(function(card) {
@@ -60,34 +59,37 @@ allCards.forEach(function(card) {
       cardsShowing.push(card);
       card.classList.add('open', 'show');
 
-  //  const firstCardType = cardsShowing[0].dataset.card;
     console.log(card.innerHTML);
 
 
       if (cardsShowing.length == 2) {
-        if (cardsShowing[0].dataset.card == cardsShowing[1].dataset.card){
-          cardsShowing[0].classList.add('match');
-          cardsShowing[0].classList.add('open');  //Do I need open and show here???
-          cardsShowing[0].classList.add('show');
+        if (cardsShowing[0].dataset.card == cardsShowing[1].dataset.card){ //if card matches remain open/show and match
+          cardsShowing[0].classList.add('match', 'open', 'show');
 
-          cardsShowing[1].classList.add('match');
-          cardsShowing[1].classList.add('open');
-          cardsShowing[1].classList.add('show');
+          cardsShowing[1].classList.add('match', 'open', 'show');
+
           cardsShowing = [];
 
         }else {
-          setTimeout(function(){
+          setTimeout(function(){  //if card does not match, remove classes
             cardsShowing.forEach(function(card) {
               card.classList.remove('open', 'show');
           });
 
           cardsShowing = [];
-        }, 1000);
+        }, 600);
       }
       }
     }
   });
 });
+
+let clock = setInterval(timer, 1000);
+function timer() {
+  let date = new Date();
+  let time = date.toLocaleTimeString();
+  document.querySelector('.timer').innerHTML = time;
+}
 
 //modal box when game is won
 const modal = document.querySelector('#modal');
