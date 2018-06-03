@@ -37,16 +37,17 @@ function shuffle(array) {
 }
 
 function initGame() {
+
   const deck = document.querySelector('.deck');
   const cardHTML = shuffle(cards).map(function(card) { //shuffle deck and call generate card function
     return generateCard(card);
   });
 
   deck.innerHTML = cardHTML.join('');
+
 }
-
+startTime();
 initGame();
-
 
 
 const allCards = document.querySelectorAll('.card');
@@ -84,13 +85,22 @@ allCards.forEach(function(card) {
   });
 });
 
-let clock = setInterval(timer, 1000);
-function timer() {
-  let date = new Date();
-  let time = date.toLocaleTimeString();
+//timer
+let clock = setInterval(startTime, 1000);
+let timer = document.querySelector('.timer');
+
+function startTime() {
+  let d = new Date();
+  let time = d.toLocaleTimeString();
   document.querySelector('.timer').innerHTML = time;
 }
 
+function stopTimer() {
+    clearInterval(timer);
+    timer.insertAdjacentHTML('beforeend', 'This game was ' +(parseInt(stopTimer) - parseInt(startTime)) + ' seconds');
+}
+
+stopTimer();
 //modal box when game is won
 const modal = document.querySelector('#modal');
 const temp = document.querySelector('#temp'); //temporary button for testing.
