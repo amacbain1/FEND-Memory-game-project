@@ -85,6 +85,19 @@ allCards.forEach(function(card) {
   });
 });
 
+const repeat = document.querySelector('.fa-repeat');
+const replay = document.querySelector('.play-again');
+
+repeat.addEventListener('click', function(e) {
+  location.reload();
+});
+
+replay.addEventListener('click', function(e) {
+  location.reload();
+});
+
+
+
 //timer
 let clock = setInterval(startTime, 1000);
 let timer = document.querySelector('.timer');
