@@ -101,19 +101,21 @@ replay.addEventListener('click', function(e) {
 
 //timer
 
-let second = setInterval(startTime, 1000);;
+let second = 0;
+    second = setInterval(startTime, 1000);;
 let minute = 0;
 let timer = document.querySelector('.timer');
 
 
 
 function startTime() {
-  
+
   second++;
     if (second >= 60) {
       minute++;
       second = "0";
     }
+
     document.querySelector('.timer').innerHTML = minute + ':' + second;
 }
 
