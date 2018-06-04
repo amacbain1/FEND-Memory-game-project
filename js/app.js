@@ -46,9 +46,9 @@ function initGame() {
   deck.innerHTML = cardHTML.join('');
 
 }
-startTime();
-initGame();
 
+initGame();
+//startTime();
 
 const allCards = document.querySelectorAll('.card');
 let cardsShowing = [];
@@ -85,6 +85,7 @@ allCards.forEach(function(card) {
   });
 });
 
+//restart game
 const repeat = document.querySelector('.fa-repeat');
 const replay = document.querySelector('.play-again');
 
@@ -99,21 +100,36 @@ replay.addEventListener('click', function(e) {
 
 
 //timer
-let clock = setInterval(startTime, 1000);
+
+let second = setInterval(startTime, 1000);
+let minute = 0;
 let timer = document.querySelector('.timer');
 
+
+
 function startTime() {
-  let d = new Date();
-  let time = d.toLocaleTimeString();
-  document.querySelector('.timer').innerHTML = time;
+  second = 0;
+  second++;
+    if (second >= 60) {
+      minute++;
+      second = "0";
+    }
+    document.querySelector('.timer').innerHTML = minute + ':' + second;
 }
 
-function stopTimer() {
+/*function stopTimer() {
+  if (card.classList.contains('match') == 16) {
     clearInterval(timer);
-    timer.insertAdjacentHTML('beforeend', 'This game was ' +(parseInt(stopTimer) - parseInt(startTime)) + ' seconds');
-}
+  } /*else {
+    setInterval(second, 1000);
+  }*/
+    //second = 0;
+    ///minute = 0;
+//}
 
-stopTimer();
+//document.querySelector('.timer').innerHTML = minute + ':' + second;
+startTime();
+
 //modal box when game is won
 const modal = document.querySelector('#modal');
 const temp = document.querySelector('#temp'); //temporary button for testing.
