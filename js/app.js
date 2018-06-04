@@ -106,8 +106,6 @@ let second = 0;
 let minute = 0;
 let timer = document.querySelector('.timer');
 
-
-
 function startTime() {
 
   second++;
@@ -126,9 +124,24 @@ function startTime() {
     setInterval(second, 1000);
   }*/
 //}
-
-//document.querySelector('.timer').innerHTML = minute + ':' + second;
 startTime();
+
+//star rating
+let stars = document.querySelector('.stars');
+let moves = document.querySelector('.moves');
+
+function removeStars() {
+  let removeOne = document.querySelector('.remove-one');
+  let removeTwo = document.querySelector('.remove-two');
+
+  if (moves >= '25') { //****Change to integer once you have counter working!!!***
+      removeOne.remove();
+  }
+  if (moves >= '40') {   //****Change to integer once you have counter working!!!***
+    removeTwo.remove();
+  }
+}
+removeStars();
 
 //modal box when game is won
 const modal = document.querySelector('#modal');
@@ -141,8 +154,8 @@ temp.onclick = function() {  //temporary button to test modal
 
 playAgain.onclick = function(){  //click to get rid of display
   modal.style.display = 'none';
+  removeStars();
 }
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
