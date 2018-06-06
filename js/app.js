@@ -53,8 +53,9 @@ initGame();
 const allCards = document.querySelectorAll('.card');
 let cardsShowing = [];
 let cardsMatch = [];
-let moveCount = 0;
+let winning = 0;
 let moves = document.querySelector('.moves');
+let move = 0;
 
 
 allCards.forEach(function(card) {
@@ -63,16 +64,18 @@ allCards.forEach(function(card) {
     if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
       cardsShowing.push(card);
       card.classList.add('open', 'show');
+      move++;
 
-    console.log(card.innerHTML);
+    moves.innerHTML = move / 2;  
+    console.log(move + " moves");
 
 
       if (cardsShowing.length == 2) {
         if (cardsShowing[0].dataset.card == cardsShowing[1].dataset.card){ //if card matches remain open/show and match
           cardsShowing[0].classList.add('match', 'open', 'show');
           //add moves and display modal at end of game.
-          moveCount++;
-          if (moveCount === 8){
+          winning++;
+          if (winning === 8){
             modal.style.display = 'block';
           }
 
