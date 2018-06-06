@@ -52,7 +52,10 @@ initGame();
 
 const allCards = document.querySelectorAll('.card');
 let cardsShowing = [];
-let cardsMatch = []; //!!**
+let cardsMatch = [];
+let moveCount = 0;
+let moves = document.querySelector('.moves');
+
 
 allCards.forEach(function(card) {
   card.addEventListener('click', function(e) {
@@ -67,9 +70,14 @@ allCards.forEach(function(card) {
       if (cardsShowing.length == 2) {
         if (cardsShowing[0].dataset.card == cardsShowing[1].dataset.card){ //if card matches remain open/show and match
           cardsShowing[0].classList.add('match', 'open', 'show');
+          //add moves and display modal at end of game.
+          moveCount++;
+          if (moveCount === 8){
+            modal.style.display = 'block';
+          }
 
           cardsShowing[1].classList.add('match', 'open', 'show');
-          cardsMatch.push(card); //!!**
+          cardsMatch.push(card);
           cardsShowing = [];
 
         }else {
@@ -86,23 +94,10 @@ allCards.forEach(function(card) {
   });
 });
 
-//restart game
-const repeat = document.querySelector('.fa-repeat');
-const replay = document.querySelector('.play-again');
-
-repeat.addEventListener('click', function(e) {
-  location.reload();
-});
-
-replay.addEventListener('click', function(e) {
-  location.reload();
-});
-
-
 
 //timer
 
-let second = 0;
+let second = -1;
     second = setInterval(startTime, 1000);
 let minute = 0;
 let timer = document.querySelector('.timer');
@@ -116,23 +111,24 @@ function startTime() {
       minute++;
       second = "0";
     }
-    if (cardsMatch.length == 16) {
-      clearInterval();
+    function clearInterval() {        //Does not work!!
+      if (cardsMatch.length == 16) {
+      }
     }
     document.querySelector('.timer').innerHTML = minute + ':' + second;
   }
-//});
 
-/*if (cardsMatch.length == 16) {
-  clearInterval(timer);
-}
-  }
-//}*/
 startTime();
+
+/*function stopTime() {
+  clearInterval(timer);
+  if (cardsMatch.length == 16) {
+  }
+stopTime();*/
+
 
 //star rating
 let stars = document.querySelector('.stars');
-let moves = document.querySelector('.moves');
 
 function removeStars() {
   let removeOne = document.querySelector('.remove-one');
@@ -149,16 +145,24 @@ removeStars();
 
 //modal box when game is won
 const modal = document.querySelector('#modal');
-const temp = document.querySelector('#temp'); //temporary button for testing.
 const playAgain = document.querySelector('.play-again');
 
-temp.onclick = function() {  //temporary button to test modal
-  modal.style.display = 'block';
-}
 
 playAgain.onclick = function(){  //click to get rid of display
   modal.style.display = 'none';
 }
+
+//restart game
+const repeat = document.querySelector('.fa-repeat');
+const replay = document.querySelector('.play-again');
+
+repeat.addEventListener('click', function(e) {
+  location.reload();
+});
+
+replay.addEventListener('click', function(e) {
+  location.reload();
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:

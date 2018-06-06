@@ -137,6 +137,10 @@ h1 {
   font-size: 1.25em;
 }
 
+.play-again {
+  color: blue;
+}
+
 .play-again:hover,
 .play-again:focus {
   color: black;
