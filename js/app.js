@@ -35,10 +35,10 @@ function shuffle(array) {
 
     return array;
 }
-
+const deck = document.querySelector('.deck');
 function initGame() {
 
-  const deck = document.querySelector('.deck');
+
   const cardHTML = shuffle(cards).map(function(card) { //shuffle deck and call generate card function
     return generateCard(card);
   });
@@ -52,6 +52,7 @@ initGame();
 
 const allCards = document.querySelectorAll('.card');
 let cardsShowing = [];
+let cardsMatch = []; //!!**
 
 allCards.forEach(function(card) {
   card.addEventListener('click', function(e) {
@@ -68,7 +69,7 @@ allCards.forEach(function(card) {
           cardsShowing[0].classList.add('match', 'open', 'show');
 
           cardsShowing[1].classList.add('match', 'open', 'show');
-
+          cardsMatch.push(card); //!!**
           cardsShowing = [];
 
         }else {
@@ -102,28 +103,31 @@ replay.addEventListener('click', function(e) {
 //timer
 
 let second = 0;
-    second = setInterval(startTime, 1000);;
+    second = setInterval(startTime, 1000);
 let minute = 0;
 let timer = document.querySelector('.timer');
 
+//document.querySelectorAll('.card').addEventListener('click', function(e) {
+  //console.log("click");
 function startTime() {
-
+    //second = setInterval(startTime, 1000);
   second++;
     if (second >= 60) {
       minute++;
       second = "0";
     }
-
+    if (cardsMatch.length == 16) {
+      clearInterval();
+    }
     document.querySelector('.timer').innerHTML = minute + ':' + second;
-}
+  }
+//});
 
-/*function stopTimer() {
-  if (card.classList.contains('match') == 16) {
-    clearInterval(timer);
-  } /*else {
-    setInterval(second, 1000);
-  }*/
-//}
+/*if (cardsMatch.length == 16) {
+  clearInterval(timer);
+}
+  }
+//}*/
 startTime();
 
 //star rating
@@ -154,7 +158,6 @@ temp.onclick = function() {  //temporary button to test modal
 
 playAgain.onclick = function(){  //click to get rid of display
   modal.style.display = 'none';
-  removeStars();
 }
 
 /*
