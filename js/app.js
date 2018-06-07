@@ -66,9 +66,7 @@ allCards.forEach(function(card) {
       card.classList.add('open', 'show');
       move++;
 
-    moves.innerHTML = move / 2;  
-    console.log(move + " moves");
-
+    moves.innerHTML = Math.ceil(move / 2);  //displays number of moves made
 
       if (cardsShowing.length == 2) {
         if (cardsShowing[0].dataset.card == cardsShowing[1].dataset.card){ //if card matches remain open/show and match
@@ -88,7 +86,6 @@ allCards.forEach(function(card) {
             cardsShowing.forEach(function(card) {
               card.classList.remove('open', 'show');
           });
-
           cardsShowing = [];
         }, 600);
       }
@@ -98,12 +95,26 @@ allCards.forEach(function(card) {
 });
 
 
+let stars = document.querySelector('.fa-star');
+let remStar = 3;
+function removeStars() {
+  if (moves > 3) {
+    remStar = 2;
+    stars.style.display = 'none';
+  }
+}
+removeStars();
+
+
+
+
 //timer
 
-let second = -1;
-    second = setInterval(startTime, 1000);
-let minute = 0;
-let timer = document.querySelector('.timer');
+let second = 0,
+    minute = 0,
+    timer  = setInterval(startTime, 1000);
+
+let timerElement = document.querySelector('.timer');
 
 //document.querySelectorAll('.card').addEventListener('click', function(e) {
   //console.log("click");
@@ -112,39 +123,21 @@ function startTime() {
   second++;
     if (second >= 60) {
       minute++;
-      second = "0";
+      second = 0;
     }
-    function clearInterval() {        //Does not work!!
-      if (cardsMatch.length == 16) {
-      }
-    }
-    document.querySelector('.timer').innerHTML = minute + ':' + second;
+
+  document.querySelector('.timer').innerHTML = minute + ' minutes : ' + second +' seconds';
   }
 
 startTime();
 
-/*function stopTime() {
+function stopTime() {
   clearInterval(timer);
-  if (cardsMatch.length == 16) {
-  }
-stopTime();*/
+}
 
 
 //star rating
-let stars = document.querySelector('.stars');
 
-function removeStars() {
-  let removeOne = document.querySelector('.remove-one');
-  let removeTwo = document.querySelector('.remove-two');
-
-  if (moves >= '25') { //****Change to integer once you have counter working!!!***
-      removeOne.remove();
-  }
-  if (moves >= '40') {   //****Change to integer once you have counter working!!!***
-    removeTwo.remove();
-  }
-}
-removeStars();
 
 //modal box when game is won
 const modal = document.querySelector('#modal');
