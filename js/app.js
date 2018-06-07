@@ -14,12 +14,7 @@ function generateCard(card) {    //generate interactive card list with data-card
   return `<li class="card" data-card=${card}><i class="fa ${card}"></i></li>`;
 }
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -48,7 +43,7 @@ function initGame() {
 }
 
 initGame();
-//startTime();
+
 
 const allCards = document.querySelectorAll('.card');
 let cardsShowing = [];
@@ -64,9 +59,7 @@ allCards.forEach(function(card) {
     if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
       cardsShowing.push(card);
       card.classList.add('open', 'show');
-      move++;
-
-    moves.innerHTML = Math.ceil(move / 2);  //displays number of moves made
+    
 
       if (cardsShowing.length == 2) {
         if (cardsShowing[0].dataset.card == cardsShowing[1].dataset.card){ //if card matches remain open/show and match
@@ -94,21 +87,26 @@ allCards.forEach(function(card) {
   });
 });
 
-
+//count Moves-change star level
 let stars = document.querySelector('.fa-star');
-let remStar = 3;
-function removeStars() {
-  if (moves > 3) {
-    remStar = 2;
-    stars.style.display = 'none';
-  }
-}
-removeStars();
+let starOne = document.querySelector('.remove-one');
+let starTwo = document.querySelector('.remove-two');
+
+allCards.forEach(function(card) {
+  card.addEventListener('click', function(e) {
+    move++
+    if (move >= 18) {
+      starOne.remove();
+    }
+    if (move >= 24) {
+      starTwo.remove();
+    }
+    moves.innerHTML = Math.ceil(move / 2);  //displays number of moves made
+  });
+});
 
 
 
-
-//timer
 
 let second = 0,
     minute = 0,
@@ -116,10 +114,8 @@ let second = 0,
 
 let timerElement = document.querySelector('.timer');
 
-//document.querySelectorAll('.card').addEventListener('click', function(e) {
-  //console.log("click");
+
 function startTime() {
-    //second = setInterval(startTime, 1000);
   second++;
     if (second >= 60) {
       minute++;
@@ -136,7 +132,6 @@ function stopTime() {
 }
 
 
-//star rating
 
 
 //modal box when game is won
