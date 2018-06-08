@@ -135,10 +135,19 @@ h1 {
 .finish {
   color: blue;
   font-size: 1.25em;
+  margin: none;
+  padding: none;
+}
+
+.message {
+  margin: 0, 0;
+  padding: none;
 }
 
 .play-again {
   color: blue;
+  margin: none;
+  padding: none;
 }
 
 .play-again:hover,
@@ -146,3 +155,6 @@ h1 {
   color: black;
   cursor: pointer;
 }
+
+
+/*Media queries*/

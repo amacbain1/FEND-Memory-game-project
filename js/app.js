@@ -52,14 +52,14 @@ let winning = 0;
 let moves = document.querySelector('.moves');
 let move = 0;
 
-
+//flip and match cards
 allCards.forEach(function(card) {
   card.addEventListener('click', function(e) {
 
     if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
       cardsShowing.push(card);
       card.classList.add('open', 'show');
-    
+
 
       if (cardsShowing.length == 2) {
         if (cardsShowing[0].dataset.card == cardsShowing[1].dataset.card){ //if card matches remain open/show and match
@@ -68,6 +68,7 @@ allCards.forEach(function(card) {
           winning++;
           if (winning === 8){
             modal.style.display = 'block';
+            stopTime(); //stop clock
           }
 
           cardsShowing[1].classList.add('match', 'open', 'show');
@@ -95,10 +96,10 @@ let starTwo = document.querySelector('.remove-two');
 allCards.forEach(function(card) {
   card.addEventListener('click', function(e) {
     move++
-    if (move >= 18) {
+    if (move >= 24) {
       starOne.remove();
     }
-    if (move >= 24) {
+    if (move >= 30) {
       starTwo.remove();
     }
     moves.innerHTML = Math.ceil(move / 2);  //displays number of moves made
@@ -107,7 +108,7 @@ allCards.forEach(function(card) {
 
 
 
-
+//game timer
 let second = 0,
     minute = 0,
     timer  = setInterval(startTime, 1000);
@@ -124,9 +125,9 @@ function startTime() {
 
   document.querySelector('.timer').innerHTML = minute + ' minutes : ' + second +' seconds';
   }
-
 startTime();
 
+//stop timer function
 function stopTime() {
   clearInterval(timer);
 }
@@ -138,10 +139,14 @@ function stopTime() {
 const modal = document.querySelector('#modal');
 const playAgain = document.querySelector('.play-again');
 
+document.querySelector('#myBtn').onclick = function() { //button for testing
+    modal.style.display = "block";
+}
 
 playAgain.onclick = function(){  //click to get rid of display
   modal.style.display = 'none';
 }
+
 
 //restart game
 const repeat = document.querySelector('.fa-repeat');
