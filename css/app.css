@@ -41,7 +41,7 @@ h1 {
     width: 660px;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    padding: 2em;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -52,8 +52,8 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    min-height: 125px;
+    min-width: 125px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -117,7 +117,7 @@ h1 {
   position: fixed;
   z-index: auto;
   width: 50%;
-  height: 30%;
+  height: 50%;
   overflow: auto;
   background-color: white;
   border-radius: 5px;
@@ -127,9 +127,9 @@ h1 {
   background-color: white;
   margin: 20%, auto;
   padding: 10px;
-  border: 7px solid blue;
   border-radius: 5px;
-  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .finish {
@@ -141,13 +141,13 @@ h1 {
 
 .message {
   margin: 0, 0;
-  padding: none;
+  padding: 0;
 }
 
 .play-again {
   color: blue;
-  margin: none;
-  padding: none;
+  margin: 0;
+  padding: 0;
 }
 
 .play-again:hover,
@@ -158,3 +158,33 @@ h1 {
 
 
 /*Media queries*/
+
+@media screen and (max-width: 800px) {
+  .deck {
+      width: 450px;
+      min-height: 460px;
+      padding: 1.5em;
+  }
+  .deck .card {
+      min-height: 90px;
+      min-width: 90px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .deck {
+      width: 300px;
+      min-height: 310px;
+      padding: 1em;
+  }
+  .deck .card {
+      min-height: 55px;
+      min-width: 55px;
+  }
+  #modal {
+    width: 80%;
+  }
+  .score-panel {
+    width: 230px;
+  }
+}
