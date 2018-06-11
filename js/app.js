@@ -110,9 +110,10 @@ allCards.forEach(function(card) {
     }
     document.querySelector('.star-rating').innerHTML = ' Your star rating is ' + starCount; //displays star count on modal
     moves.innerHTML = Math.ceil(move / 2);  //displays number of moves made
-    document.querySelector('.modal-moves').innerHTML = 'Number of moves ' + Math.ceil(move / 2); //displays number of moves on modal
+    document.querySelector('.modal-moves').innerHTML = 'Number of moves: ' + Math.ceil(move / 2); //displays number of moves on modal
   });
 });
+
 
 
 const playAgain = document.querySelector('.play-again');
@@ -120,22 +121,25 @@ let modalTime = document.querySelector('.modal-time');
 //game timer
 let second = 0,
     minute = 0,
-    timer  = setInterval(startTime, 1000);
+    timer = setInterval (startTime, 1000);
 let finishTime = '';  //holds time game finished
 let timerElement = document.querySelector('.timer');
 
 function startTime() {
-  second++;
-    if (second >= 60) {
-      minute++;
-      second = 0;
-    }
+      second++;
+        if (second >= 60) {
+          minute++;
+          second = 0;
+        }
   finishTime = minute + ' minutes : ' + second +' seconds';
   document.querySelector('.modal-time').innerHTML = 'Your time is ' + finishTime;  //game time displayed on modal
   document.querySelector('.timer').innerHTML = minute + ' minutes : ' + second +' seconds';
 
-  }
-startTime();
+}
+//startTime();
+
+
+
 
 //stop timer function
 function stopTime() {

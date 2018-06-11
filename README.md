@@ -5,14 +5,14 @@
 * [Introduction](#introduction)
 * [Instructions](#instructions)
 * [Contributing](#contributing)
-* [Dependencies](#dependencies) 
+* [Dependencies](#dependencies)
 
 ## Introduction
 
 This is an interactive game similar to the classic card game, Concentration.
-This is Project 2 of Udacity's Front End Developer Nanodegree program.
-Please visit [Udacity's Catalog](https://www.udacity.com/courses/all) of courses
-for further information.
+This is Project 2 of Udacity's Front End Developer Nanodegree program. Please
+visit [Udacity's Catalog](https://www.udacity.com/courses/all) of courses for
+further information.
 
 ## Instructions
 
