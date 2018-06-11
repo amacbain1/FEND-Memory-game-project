@@ -92,29 +92,42 @@ allCards.forEach(function(card) {
 let stars = document.querySelector('.fa-star');
 let starOne = document.querySelector('.remove-one');
 let starTwo = document.querySelector('.remove-two');
+let starCount = 3;
+let modal = document.querySelector('#modal');
 
 allCards.forEach(function(card) {
   card.addEventListener('click', function(e) {
     move++
     if (move >= 24) {
-      starOne.remove();
+      starOne.remove();  //removes one star
+      starCount = 2;
+      //document.querySelector('.star-rating').innerHTML = ' Your star rating is ' + starCount;
+
     }
+
     if (move >= 30) {
-      starTwo.remove();
+      starTwo.remove();  //removes second star
+      starCount = 1;
     }
+    document.querySelector('.star-rating').innerHTML = ' Your star rating is ' + starCount;
+
     moves.innerHTML = Math.ceil(move / 2);  //displays number of moves made
   });
 });
 
 
+const playAgain = document.querySelector('.play-again');
+//let modalStars = document.querySelector('.star-rating');
+let modalTime = document.querySelector('.modal-time');
 
 //game timer
 let second = 0,
     minute = 0,
     timer  = setInterval(startTime, 1000);
+let finishTime = '';
 
 let timerElement = document.querySelector('.timer');
-
+//let modal = document.querySelector('#modal');
 
 function startTime() {
   second++;
@@ -122,8 +135,10 @@ function startTime() {
       minute++;
       second = 0;
     }
-
+  finishTime = minute + ' minutes : ' + second +' seconds';
+  document.querySelector('.modal-time').innerHTML = 'Your time is ' + finishTime;
   document.querySelector('.timer').innerHTML = minute + ' minutes : ' + second +' seconds';
+
   }
 startTime();
 
@@ -136,16 +151,24 @@ function stopTime() {
 
 
 //modal box when game is won
-const modal = document.querySelector('#modal');
-const playAgain = document.querySelector('.play-again');
+//const modal = document.querySelector('#modal');
+/*const playAgain = document.querySelector('.play-again');
+let modalStars = document.querySelector('.star-rating');
+let modalTime = document.querySelector('.modal-time');*/
 
+
+
+//TEST BUTTON FOR MODAL
 document.querySelector('#myBtn').onclick = function() { //button for testing
     modal.style.display = "block";
-}
+  }
+
+
 
 playAgain.onclick = function(){  //click to get rid of display
   modal.style.display = 'none';
 }
+
 
 
 //restart game
