@@ -110,14 +110,13 @@ allCards.forEach(function(card) {
       starCount = 1;
     }
     document.querySelector('.star-rating').innerHTML = ' Your star rating is ' + starCount;
-
     moves.innerHTML = Math.ceil(move / 2);  //displays number of moves made
+    document.querySelector('.modal-moves').innerHTML = 'Number of moves ' + Math.ceil(move / 2);
   });
 });
 
 
 const playAgain = document.querySelector('.play-again');
-//let modalStars = document.querySelector('.star-rating');
 let modalTime = document.querySelector('.modal-time');
 
 //game timer
