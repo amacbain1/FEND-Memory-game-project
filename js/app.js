@@ -1,6 +1,9 @@
 /*
- * Create a list that holds all of your cards
- */
+
+ Assistance and some code provided by Mike Wales via FEND EMEA Memory Game Webinar
+*/
+
+//Array holding all cards
 const cards = ['fa-diamond', 'fa-diamond',
                'fa-paper-plane-o', 'fa-paper-plane-o',
                'fa-anchor', 'fa-anchor',
@@ -32,8 +35,6 @@ function shuffle(array) {
 }
 const deck = document.querySelector('.deck');
 function initGame() {
-
-
   const cardHTML = shuffle(cards).map(function(card) { //shuffle deck and call generate card function
     return generateCard(card);
   });
@@ -67,7 +68,7 @@ allCards.forEach(function(card) {
           //add moves and display modal at end of game.
           winning++;
           if (winning === 8){
-            modal.style.display = 'block';
+            modal.style.display = 'block'; //open modal
             stopTime(); //stop clock
           }
 
@@ -101,32 +102,27 @@ allCards.forEach(function(card) {
     if (move >= 24) {
       starOne.remove();  //removes one star
       starCount = 2;
-      //document.querySelector('.star-rating').innerHTML = ' Your star rating is ' + starCount;
-
     }
 
     if (move >= 30) {
       starTwo.remove();  //removes second star
       starCount = 1;
     }
-    document.querySelector('.star-rating').innerHTML = ' Your star rating is ' + starCount;
+    document.querySelector('.star-rating').innerHTML = ' Your star rating is ' + starCount; //displays star count on modal
     moves.innerHTML = Math.ceil(move / 2);  //displays number of moves made
-    document.querySelector('.modal-moves').innerHTML = 'Number of moves ' + Math.ceil(move / 2);
+    document.querySelector('.modal-moves').innerHTML = 'Number of moves ' + Math.ceil(move / 2); //displays number of moves on modal
   });
 });
 
 
 const playAgain = document.querySelector('.play-again');
 let modalTime = document.querySelector('.modal-time');
-
 //game timer
 let second = 0,
     minute = 0,
     timer  = setInterval(startTime, 1000);
-let finishTime = '';
-
+let finishTime = '';  //holds time game finished
 let timerElement = document.querySelector('.timer');
-//let modal = document.querySelector('#modal');
 
 function startTime() {
   second++;
@@ -135,7 +131,7 @@ function startTime() {
       second = 0;
     }
   finishTime = minute + ' minutes : ' + second +' seconds';
-  document.querySelector('.modal-time').innerHTML = 'Your time is ' + finishTime;
+  document.querySelector('.modal-time').innerHTML = 'Your time is ' + finishTime;  //game time displayed on modal
   document.querySelector('.timer').innerHTML = minute + ' minutes : ' + second +' seconds';
 
   }
@@ -148,22 +144,7 @@ function stopTime() {
 
 
 
-
-//modal box when game is won
-//const modal = document.querySelector('#modal');
-/*const playAgain = document.querySelector('.play-again');
-let modalStars = document.querySelector('.star-rating');
-let modalTime = document.querySelector('.modal-time');*/
-
-
-
-//TEST BUTTON FOR MODAL
-document.querySelector('#myBtn').onclick = function() { //button for testing
-    modal.style.display = "block";
-  }
-
-
-
+//modal
 playAgain.onclick = function(){  //click to get rid of display
   modal.style.display = 'none';
 }
@@ -181,6 +162,8 @@ repeat.addEventListener('click', function(e) {
 replay.addEventListener('click', function(e) {
   location.reload();
 });
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
