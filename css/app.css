@@ -136,18 +136,23 @@ h1 {
   color: blue;
   font-size: 1.25em;
   margin: none;
-  padding: none;
-}
-
-.message {
-  margin: 0, 0;
-  padding: 0;
+  padding: 15px;
+  text-align: center;
 }
 
 .play-again {
   color: blue;
   margin: 0;
   padding: 0;
+}
+
+.modal-moves {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.star-rating {
+  margin-top: 15px;
 }
 
 .play-again:hover,
